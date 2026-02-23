@@ -35,9 +35,9 @@ const COURSES = {
 
 // Campus location for geolocation check
 const CAMPUS = {
-  lat: 46.198582099764764,
-  lon: -84.69438504752182,
-  radiusMeters: 100,
+  lat: 46.17636,
+  lon: 21.34336,
+  radiusMeters: 200,
 };
 
 // Feature toggles

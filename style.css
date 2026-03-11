@@ -1,3 +1,4 @@
+/* --- STILURI DE BAZĂ --- */
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -13,13 +14,16 @@ body {
   position: relative;
   background-color: #1a1a1a;
   color: #ffffff;
+  overflow-x: hidden; /* Previne scroll-ul stânga-dreapta accidental */
 }
 
+/* --- BUTOANE ȘI NAVIGARE --- */
 #courseButtons {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .back-btn {
@@ -34,28 +38,30 @@ body {
   border: none;
   border-radius: 6px;
   transition: background-color 0.2s ease;
-  width: auto;
-  max-width: none;
-  margin: 0;
+  z-index: 1001;
 }
 
-.back-btn:hover {
-  background-color: #3d4043;
-}
+.back-btn:hover { background-color: #3d4043; }
 
 h1 {
   font-size: 28px;
-  margin: 0 0 20px 0;
+  margin: 60px 0 20px 0; /* Spațiu pentru butonul back */
   max-width: 90%;
+  line-height: 1.2;
 }
 
 .section-title {
-  margin: 6px 0 6px 0;
-  padding: 0;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #aaa;
 }
 
-.back-btn + h1 {
-  margin-top: 60px;
+/* --- INPUT ȘI AUTOCOMPLETE (ZONA CRITICĂ) --- */
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* Lățime optimă pentru orice telefon */
+  margin: 0 auto;
 }
 
 input {
@@ -63,224 +69,16 @@ input {
   font-size: 18px;
   text-transform: uppercase;
   text-align: center;
-  width: 300px;
-  max-width: 100%;
+  width: 100%; /* Ocupă tot containerul părinte */
   border: 2px solid #555;
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #2d2d2d;
   color: #ffffff;
+  outline: none;
 }
 
-input::placeholder {
-  color: #aaa;
-}
-
-button {
-  padding: 20px 40px;
-  font-size: 20px;
-  margin: 10px 0;
-  cursor: pointer;
-  background-color: #198754;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  width: 300px;
-  max-width: 90%;
-  box-sizing: border-box;
-}
-
-button:hover {
-  background-color: #157347;
-}
-
-button:active {
-  transform: translateY(1px);
-}
-
-/* Segmented button group */
-.button-group {
-  display: flex;
-  width: 400px;
-  max-width: 90%;
-  margin: 0 auto;      
-  align-self: center;   
-}
-
-.button-group > button {
-  margin: 0;              
-  width: auto;             
-  max-width: none;
-  border-radius: 0;      
-  flex: 1 1 50%;
-}
-
-.button-group > button:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-.button-group > button:last-child {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-
-.button-group > button + button {
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Color variants */
-.btn-primary {
-  background-color: #198754;
-}
-.btn-primary:hover {
-  background-color: #157347;
-}
-.btn-secondary {
-  background-color: #0d6efd;
-}
-.btn-secondary:hover {
-  background-color: #0b5ed7;
-}
-
-.msg {
-  margin-top: 20px;
-  font-size: 16px;
-  text-align: center;
-  max-width: 90%;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
-  body {
-    gap: 25px;
-    padding: 15px;
-  }
-
-  .back-btn {
-    top: 15px;
-    left: 15px;
-    font-size: 18px;
-    padding: 12px 24px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-  .back-btn + h1 {
-    margin-top: 70px;
-  }
-  .button-group {
-    width: 100%;
-  }
-  .button-group > button {
-    width: auto;
-  }
-  button:not(.back-btn) {
-    font-size: 24px;
-    padding: 25px 20px;
-    width: 300px;
-  }
-
-  input {
-    font-size: 22px;
-    padding: 18px;
-    width: 100%;
-  }
-
-  .msg {
-    font-size: 18px;
-  }
-}
-
-.msg {
-  margin-top: 20px;
-  font-size: 16px;
-  text-align: center;
-  max-width: 90%;
-}
-
-::selection {
-  background-color: #198754;
-  color: white;
-}
-
-::-moz-selection {
-  background-color: #198754;
-  color: white;
-}
-
-/* Scrollbar dark theme */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #2d2d2d;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #666;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  body {
-    gap: 20px;
-    padding: 10px;
-  }
-
-  .back-btn {
-    top: 10px;
-    left: 10px;
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  .back-btn + h1 {
-    margin-top: 20px;
-  }
-
-  .button-group {
-    width: 100%;
-  }
-  .button-group > button {
-    width: auto;
-  }
-  button:not(.back-btn) {
-    font-size: 20px;
-    padding: 20px 15px;
-    width: 300px;
-  }
-
-  input {
-    font-size: 18px;
-    padding: 15px;
-  }
-
-  .msg {
-    font-size: 16px;
-  }
-}
-
-/* Autocomplete styles */
-.autocomplete-container {
-  position: relative;
-  display: inline-block;
-  width: 300px;
-  max-width: 90%;
-}
+input:focus { border-color: #198754; }
 
 .suggestions-list {
   position: absolute;
@@ -288,36 +86,105 @@ button:active {
   left: 0;
   right: 0;
   list-style: none;
-  margin: 5px 0 0 0;
+  margin: 4px 0 0 0;
   padding: 0;
   border: 2px solid #555;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px;
   background-color: #2d2d2d;
   max-height: 200px;
   overflow-y: auto;
-  display: none;
-  z-index: 1000;
+  display: none; /* Controlat din JS */
+  z-index: 2000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
 .suggestion-item {
-  padding: 12px 15px;
+  padding: 14px 15px;
   cursor: pointer;
   text-align: left;
   color: #ffffff;
   border-bottom: 1px solid #444;
-  transition: background-color 0.2s ease;
+  font-size: 16px;
 }
 
-.suggestion-item:last-child {
-  border-bottom: none;
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-item:hover { background-color: #3d3d3d; }
+
+/* --- BUTOANE ACȚIUNE --- */
+button:not(.back-btn) {
+  padding: 20px;
+  font-size: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  background-color: #198754;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 350px;
+  box-sizing: border-box;
 }
 
-.suggestion-item:hover {
-  background-color: #3d3d3d;
+/* Gruparea Curs / Lab */
+.button-group {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+  margin: 10px auto;
 }
 
-.suggestion-item:active {
-  background-color: #4d4d4d;
+.button-group > button {
+  margin: 0 !important;
+  flex: 1;
+  border-radius: 0;
+  font-size: 16px !important;
+  padding: 15px 5px !important;
 }
 
+.button-group > button:first-child { border-radius: 8px 0 0 8px !important; }
+.button-group > button:last-child { border-radius: 0 8px 8px 0 !important; }
+.button-group > button + button { border-left: 1px solid rgba(255, 255, 255, 0.2); }
+
+/* Culori Butoane */
+.btn-primary { background-color: #198754; }
+.btn-primary:hover { background-color: #157347; }
+.btn-secondary { background-color: #0d6efd; }
+.btn-secondary:hover { background-color: #0b5ed7; }
+
+/* Mesaje */
+.msg {
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: center;
+  max-width: 90%;
+  min-height: 1.2em;
+}
+
+/* --- ADAPTARE PENTRU MOBIL (ECHILIBRU FINAL) --- */
+@media (max-width: 480px) {
+  body { padding: 15px; gap: 15px; }
+  
+  h1 { font-size: 24px; margin-top: 50px; }
+  
+  .back-btn {
+    top: 10px;
+    left: 10px;
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  button:not(.back-btn) {
+    font-size: 18px;
+    padding: 18px;
+  }
+
+  .button-group > button {
+    font-size: 14px !important;
+  }
+}
+
+/* Scrollbar Style */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #2d2d2d; }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }

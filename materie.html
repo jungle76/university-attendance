@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alege Tipul</title>
+    <title>Alege Tipul Activității</title>
     <link rel="stylesheet" href="style.css?v=2">
     <script src="config.js"></script>
     <script src="materie.js" defer></script>
 </head>
 
 <body>
-    <button class="back-btn" onclick="location.href='index.html'">ÎNAPOI</button>
-    <h1 id="courseTitle">SELECTEAZĂ MATERIA</h1>
+    <button class="back-btn" onclick="location.href='index.html'">⬅ ÎNAPOI</button>
     
-    <h2 class="section-title">CURS</h2>
-    <div class="button-group">
-        <button id="coursePrezentaBtn" class="btn-primary">MARCHEAZĂ PREZENȚA</button>
-        <button id="courseVizualizareBtn" class="btn-secondary">VIZUALIZARE PREZENȚE</button>
-    </div>
+    <h1 id="courseTitle">Se încarcă materia...</h1>
     
-    <h2 class="section-title">LABORATOR</h2>
-    <div class="button-group">
-        <button id="labPrezentaBtn" class="btn-primary">MARCHEAZĂ PREZENȚA</button>
-        <button id="labVizualizareBtn" class="btn-secondary">VIZUALIZARE PREZENȚE</button>
+    <div class="container">
+        <h2 class="section-title">CURS</h2>
+        <div class="button-group">
+            <button id="coursePrezentaBtn" class="btn-primary">MARCHEAZĂ PREZENȚA</button>
+            <button id="courseVizualizareBtn" class="btn-secondary">VIZUALIZARE PREZENȚE</button>
+        </div>
+        
+        <hr> <h2 class="section-title">LABORATOR</h2>
+        <div class="button-group">
+            <button id="labPrezentaBtn" class="btn-primary">MARCHEAZĂ PREZENȚA</button>
+            <button id="labVizualizareBtn" class="btn-secondary">VIZUALIZARE PREZENȚE</button>
+        </div>
     </div>
-</body>
 
+    <script>
+        // Mică logică pentru a afișa numele materiei pe ecran
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('course');
+            
+            if (courseId && COURSES[courseId]) {
+                document.getElementById('courseTitle').textContent = COURSES[courseId].name;
+            } else {
+                document.getElementById('courseTitle').textContent = "Materia nu a fost găsită";
+            }
+        });
+    </script>
+</body>
 </html>

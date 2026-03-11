@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +7,27 @@
   <link rel="stylesheet" href="style.css?v=2">
   <script src="config.js"></script>
 </head>
-
 <body>
   <h1>ALEGE MATERIA</h1>
-  <div id="courseButtons"></div>
+  <div id="courseButtons" class="container"></div>
 
   <script>
-    // Dynamically generate course buttons from config
     const container = document.getElementById('courseButtons');
-    Object.values(COURSES).forEach(course => {
-      const button = document.createElement('button');
-      button.textContent = course.name;
-      button.onclick = () => location.href = `materie.html?course=${course.id}`;
-      container.appendChild(button);
-    });
+    
+    // Verificăm dacă COURSES există în config.js
+    if (typeof COURSES !== 'undefined') {
+      Object.values(COURSES).forEach(course => {
+        const button = document.createElement('button');
+        button.textContent = course.name;
+        button.className = 'course-btn'; // Clasă pentru stilizare ușoară
+        button.onclick = () => {
+          location.href = `materie.html?course=${course.id}`;
+        };
+        container.appendChild(button);
+      });
+    } else {
+      container.innerHTML = "<p style='color:red;'>Eroare: Nu s-a putut încărca lista de cursuri din config.js</p>";
+    }
   </script>
 </body>
-
 </html>
